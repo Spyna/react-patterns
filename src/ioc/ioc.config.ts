@@ -11,9 +11,7 @@ const createContainer = (): Container => {
     defaultScope: "Singleton",
   });
 
-  container
-    .bind<string>(TYPES.TodoBaseUrl)
-    .toConstantValue(config.todoBaseUrl);
+  container.bind<string>(TYPES.TodoBaseUrl).toConstantValue(config.todoBaseUrl);
 
   container
     .bind<TodoStore>(TYPES.TodoStore)
