@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.done {
+  text-decoration: line-through;
+}
+
+header {
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-card {
+  padding: 4px 8px;
+}
+
+.todo-card button {
+  margin: 0 8px;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 2px -2px 5px 5px #00000033;
+}
+
+main {
+  padding: 16px;
+}
+
+.error {
+  padding: 8px;
+  background-color: #ff000044;
+  border-radius: 3px;
+}
