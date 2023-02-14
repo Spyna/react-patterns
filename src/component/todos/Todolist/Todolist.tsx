@@ -1,31 +1,22 @@
-import axios from "axios";
+import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { Todo as TodoType } from "../../../domain/Todo";
+import { todoStore } from "../../../service/TodoService";
 import { byCompleted } from "../../../utils/sortUtils";
 import Error from "../../Error/Error";
 import Loading from "../../Loading/Loading";
 import Todo from "../Todo/Todo";
 
-export default function TodoList() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+export default observer(function TodoList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | undefined>();
 
   async function loadTodos() {
     try {
-      const response = await axios.get<TodoType[]>(
-        "https://jsonplaceholder.typicode.com/todos",
-        {
-          params: {
-            userId: 1,
-          },
-        }
-      );
-      setTodos(response.data);
+      await todoStore.loadTodos();
     } catch (error) {
       if (error instanceof Error) {
         setError((error as Error).message);
-      } 
+      }
     } finally {
       setLoading(false);
     }
@@ -38,7 +29,7 @@ export default function TodoList() {
   return (
     <main>
       <h2>Todo list</h2>
-      {todos
+      {todoStore.todos
         .slice()
         .sort(byCompleted)
         .map((todo) => (
@@ -48,4 +39,4 @@ export default function TodoList() {
       {error && <Error message={error} />}
     </main>
   );
-}
+});

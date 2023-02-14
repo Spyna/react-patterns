@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
+import { todoStore } from "../../../service/TodoService";
 import Error from "../../Error/Error";
 
 export default function AddTodo() {
@@ -14,14 +14,7 @@ export default function AddTodo() {
     event.preventDefault();
     setLoading(true);
     try {
-      const newTodo = await axios.post(
-        "https://jsonplaceholder.typicode.com/todos/",
-        {
-          title: text,
-          userId: 1,
-        }
-      );
-      //TODO add the new created todo to the todo list
+      await todoStore.createTodo(text);
     } catch (error) {
       setError((error as Error).message);
     } finally {
