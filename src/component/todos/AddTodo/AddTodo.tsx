@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { todoStore } from "../../../service/TodoService";
+import { TYPES } from "../../../ioc/ioc.config";
+import { useInject } from "../../../ioc/useInject";
+import { TodoStore } from "../../../service/TodoService";
 import Error from "../../Error/Error";
 
 export default function AddTodo() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
+  const todoStore = useInject<TodoStore>(TYPES.TodoStore);
   function handleTextChange(event: React.ChangeEvent<HTMLInputElement>) {
     setText(event.target.value);
   }
