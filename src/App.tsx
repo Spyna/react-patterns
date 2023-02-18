@@ -1,4 +1,5 @@
 import Header from "./component/Header/Header";
+import { withIoc } from "./ioc/withIoc";
 import IndexPage from "./pages/IndexPage";
 
 function App() {
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default withIoc(App);
