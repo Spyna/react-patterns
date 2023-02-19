@@ -3,7 +3,14 @@ import { Container } from "inversify";
 import { TodoStore } from "../service/TodoService";
 import { TodoStoreImpl } from "../service/impl/TodoServiceImpl";
 import { TYPES } from "./ioc.types";
-import { config } from "../config/app.config";
+import { config, routingConfig } from "../config/app.config";
+import {
+  RouterType,
+  RoutingConfig,
+  RoutingService,
+  RoutingServiceType,
+} from "../routing/RoutingService";
+import { RouterServiceImpl } from "../routing/RouterServiceImpl";
 
 const createContainer = (): Container => {
   const container = new Container({
@@ -12,6 +19,13 @@ const createContainer = (): Container => {
   });
 
   container.bind<string>(TYPES.TodoBaseUrl).toConstantValue(config.todoBaseUrl);
+
+  container.bind<RoutingConfig>(RouterType).toConstantValue(routingConfig);
+
+  container
+    .bind<RoutingService>(RoutingServiceType)
+    .to(RouterServiceImpl)
+    .inSingletonScope();
 
   container
     .bind<TodoStore>(TYPES.TodoStore)

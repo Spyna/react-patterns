@@ -1,14 +1,17 @@
 import Header from "./component/Header/Header";
+import NavBar from "./component/NavBar/NavBar";
 import { withIoc } from "./ioc/withIoc";
-import IndexPage from "./pages/IndexPage";
+import CurrentRoute from "./routing/CurrentRoute";
+import { withRouter } from "./routing/hooks";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <IndexPage />
+      <NavBar />
+      <CurrentRoute />
     </div>
   );
 }
 
-export default withIoc(App);
+export default withIoc(withRouter(App));
