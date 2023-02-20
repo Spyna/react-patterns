@@ -1,5 +1,6 @@
 import AboutPage from "../pages/AboutPage";
 import IndexPage from "../pages/IndexPage";
+import LoginPage from "../pages/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import { RoutingConfig } from "../routing/RoutingService";
 
@@ -9,6 +10,7 @@ export const config = {
 
 export const routingConfig: RoutingConfig = {
   notFoundComponent: NotFoundPage,
+  loginComponent: LoginPage,
   routes: [
     {
       component: IndexPage,
@@ -17,6 +19,7 @@ export const routingConfig: RoutingConfig = {
     {
       component: AboutPage,
       path: "/about",
+      auth: true,
     },
   ],
 };

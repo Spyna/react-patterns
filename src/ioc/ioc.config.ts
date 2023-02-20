@@ -9,8 +9,11 @@ import {
   RoutingConfig,
   RoutingService,
   RoutingServiceType,
+  AuthenticationServiceType,
 } from "../routing/RoutingService";
 import { RouterServiceImpl } from "../routing/RouterServiceImpl";
+import { AuthenticationService } from "../service/AuthenticationService";
+import { AuthenticationServiceImpl } from "../service/impl/AuthenticationServiceImpl";
 
 const createContainer = (): Container => {
   const container = new Container({
@@ -31,6 +34,15 @@ const createContainer = (): Container => {
     .bind<TodoStore>(TYPES.TodoStore)
     .to(TodoStoreImpl)
     .inSingletonScope();
+
+  container
+    .bind<AuthenticationService>(AuthenticationServiceType)
+    .to(AuthenticationServiceImpl)
+    .inSingletonScope();
+
+  container
+    .bind(TYPES.AuthenticationService)
+    .toService(AuthenticationServiceType);
 
   return container;
 };
