@@ -1,3 +1,7 @@
+interface Authorization {
+  [key: string]: boolean;
+}
+
 export interface User {
   id: string;
   name: string;
@@ -5,4 +9,5 @@ export interface User {
   email: string;
   phone: string;
   website: string;
+  authorization: Authorization;
 }

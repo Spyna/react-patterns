@@ -25,6 +25,10 @@ export class AuthenticationServiceImpl implements AuthenticationService {
       runInAction(() => {
         this.user = mockUser();
       });
+    } else if (username === "Antonette") {
+      runInAction(() => {
+        this.user = mockAdmin();
+      });
     } else {
       throw new AuthenticationException("invalid credentials");
     }
@@ -49,6 +53,21 @@ function mockUser(): User {
     username: "Bret",
     email: "Sincere@april.biz",
     phone: "1-770-736-8031 x56442",
-    website: "hildegard.org",
+    website: "spyna.it",
+    authorization: {},
+  };
+}
+
+function mockAdmin(): User {
+  return {
+    id: "2",
+    name: "Antonette de Cognom",
+    username: "Antonette",
+    email: "Sincere@april.biz",
+    phone: "1-770-736-8031 x56442",
+    website: "spyna.it",
+    authorization: {
+      "todo.delete": true,
+    },
   };
 }

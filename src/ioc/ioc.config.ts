@@ -14,6 +14,8 @@ import {
 import { RouterServiceImpl } from "../routing/RouterServiceImpl";
 import { AuthenticationService } from "../service/AuthenticationService";
 import { AuthenticationServiceImpl } from "../service/impl/AuthenticationServiceImpl";
+import { AuthorizationService } from "../service/AuthorizationService";
+import { AuthorizationServiceImpl } from "../service/impl/AuthorizationServiceImpl";
 
 const createContainer = (): Container => {
   const container = new Container({
@@ -38,6 +40,11 @@ const createContainer = (): Container => {
   container
     .bind<AuthenticationService>(AuthenticationServiceType)
     .to(AuthenticationServiceImpl)
+    .inSingletonScope();
+
+  container
+    .bind<AuthorizationService>(TYPES.AuthorizationServiceType)
+    .to(AuthorizationServiceImpl)
     .inSingletonScope();
 
   container

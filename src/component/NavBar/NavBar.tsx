@@ -6,11 +6,13 @@ export default function NavBar() {
       <h2>Navigation</h2>
       <ul>
         <li>
-          <Link href="/">Home</Link>
+          <Link href="/">
+            Home <small>(protected)</small>
+          </Link>
         </li>
         <li>
           <Link href="/about">
-            About <small>(protected)</small>
+            About <small>(public)</small>
           </Link>
         </li>
         <li>

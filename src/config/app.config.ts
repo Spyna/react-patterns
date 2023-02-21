@@ -15,11 +15,11 @@ export const routingConfig: RoutingConfig = {
     {
       component: IndexPage,
       path: "/",
+      auth: true,
     },
     {
       component: AboutPage,
       path: "/about",
-      auth: true,
     },
   ],
 };

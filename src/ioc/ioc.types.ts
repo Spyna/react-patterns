@@ -3,4 +3,5 @@ export const TYPES = {
   TodoBaseUrl: Symbol.for("TodoBaseUrl"),
   RoutingService: Symbol.for("RoutingService"),
   AuthenticationService: Symbol.for("AuthenticationService"),
+  AuthorizationServiceType: Symbol.for("AuthorizationServiceType"),
 };
