@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { action, makeObservable, observable, runInAction } from "mobx";
-import { User } from "../../domain/User";
+import { Profile, User } from "../../domain/User";
 import { AuthenticationService } from "../AuthenticationService";
 
 @injectable()
@@ -54,6 +54,7 @@ function mockUser(): User {
     email: "Sincere@april.biz",
     phone: "1-770-736-8031 x56442",
     website: "spyna.it",
+    profile: Profile.User,
     authorization: {},
   };
 }
@@ -66,6 +67,7 @@ function mockAdmin(): User {
     email: "Sincere@april.biz",
     phone: "1-770-736-8031 x56442",
     website: "spyna.it",
+    profile: Profile.Admin,
     authorization: {
       "todo.delete": true,
     },

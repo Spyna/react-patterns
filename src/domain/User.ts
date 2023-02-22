@@ -2,6 +2,11 @@ interface Authorization {
   [key: string]: boolean;
 }
 
+export enum Profile {
+  User = "user",
+  Admin = "admin",
+}
+
 export interface User {
   id: string;
   name: string;
@@ -10,4 +15,5 @@ export interface User {
   phone: string;
   website: string;
   authorization: Authorization;
+  profile: Profile;
 }

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --background-color: #fff;
 }
 
 code {
@@ -34,6 +35,7 @@ header {
   display: flex;
   justify-content: space-between;
   box-shadow: 2px -2px 5px 5px #00000033;
+  background-color: var(--background-color);
 }
 
 main {

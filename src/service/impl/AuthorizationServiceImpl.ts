@@ -13,4 +13,8 @@ export class AuthorizationServiceImpl implements AuthorizationService {
       this.authenticationService.getUser()?.authorization[permissionName]
     );
   }
+
+  getProfile() {
+    return this.authenticationService.getUser()?.profile;
+  }
 }

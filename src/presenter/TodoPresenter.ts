@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { TYPES } from "../ioc/ioc.types";
 import {
-  Authorizations,
+  Permissions,
   type AuthorizationService,
 } from "../service/AuthorizationService";
 import { type TodoStore } from "../service/TodoService";
@@ -29,7 +29,7 @@ export class TodoPresenter implements Presenter {
     });
   }
   loadViewModel(): Promise<void> {
-    this.canDelete = this.authService.hasPermission(Authorizations.todo.delete);
+    this.canDelete = this.authService.hasPermission(Permissions.todo.delete);
     return Promise.resolve();
   }
   cleanModel(): Promise<void> {
