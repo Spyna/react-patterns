@@ -1,4 +1,4 @@
-import Link from "../../routing/Link";
+import { Link } from "terso-routing";
 
 export default function NavBar() {
   return (

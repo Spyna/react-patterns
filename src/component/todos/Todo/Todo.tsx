@@ -1,5 +1,5 @@
 import { Todo as TodoType } from "../../../domain/Todo";
-import { useModel } from "../../../ioc/useModel";
+import { useModel } from "terso";
 import { TodoPresenter, TodoViewModel } from "../../../presenter/TodoPresenter";
 
 interface TodoProps {

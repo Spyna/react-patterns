@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TYPES } from "../../../ioc/ioc.types";
-import { useInject } from "../../../ioc/useInject";
+import {useInject } from "terso";
 import { TodoStore } from "../../../service/TodoService";
 import Error from "../../Error/Error";
 

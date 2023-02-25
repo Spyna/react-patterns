@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { TYPES } from "../../ioc/ioc.types";
-import { useInject } from "../../ioc/useInject";
+import {useInject } from "terso";
 import { AuthenticationService } from "../../service/AuthenticationService";
 
 export default observer(function Header() {

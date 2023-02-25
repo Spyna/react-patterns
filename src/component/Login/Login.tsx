@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { useInject } from "../../ioc/useInject";
+import {useInject } from "terso";
 import { LoginPresenter } from "../../presenter/LoginPresenter";
 
 export default observer(function Login() {

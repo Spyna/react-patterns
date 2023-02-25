@@ -1,57 +1,31 @@
-import "reflect-metadata";
-import { Container } from "inversify";
-import { TodoStore } from "../service/TodoService";
-import { TodoStoreImpl } from "../service/impl/TodoServiceImpl";
-import { TYPES } from "./ioc.types";
-import { config, routingConfig } from "../config/app.config";
-import {
-  RouterType,
-  RoutingConfig,
-  RoutingService,
-  RoutingServiceType,
-  AuthenticationServiceType,
-} from "../routing/RoutingService";
-import { RouterServiceImpl } from "../routing/RouterServiceImpl";
-import { AuthenticationService } from "../service/AuthenticationService";
-import { AuthenticationServiceImpl } from "../service/impl/AuthenticationServiceImpl";
-import { AuthorizationService } from "../service/AuthorizationService";
-import { AuthorizationServiceImpl } from "../service/impl/AuthorizationServiceImpl";
+import "reflect-metadata"
+import { Container } from "inversify"
+import { TodoStore } from "../service/TodoService"
+import { TodoStoreImpl } from "../service/impl/TodoServiceImpl"
+import { TYPES } from "./ioc.types"
+import { config, routingConfig } from "../config/app.config"
+import { AuthenticationServiceType, configureRouting } from "terso-routing"
+import { AuthenticationService } from "../service/AuthenticationService"
+import { AuthenticationServiceImpl } from "../service/impl/AuthenticationServiceImpl"
+import { AuthorizationService } from "../service/AuthorizationService"
+import { AuthorizationServiceImpl } from "../service/impl/AuthorizationServiceImpl"
 
-const createContainer = (): Container => {
-  const container = new Container({
-    autoBindInjectable: true,
-    defaultScope: "Singleton",
-  });
+export function configureContainer(container: Container) {
+    container.bind<string>(TYPES.TodoBaseUrl).toConstantValue(config.todoBaseUrl)
 
-  container.bind<string>(TYPES.TodoBaseUrl).toConstantValue(config.todoBaseUrl);
+    configureRouting(container, routingConfig)
 
-  container.bind<RoutingConfig>(RouterType).toConstantValue(routingConfig);
+    container.bind<TodoStore>(TYPES.TodoStore).to(TodoStoreImpl).inSingletonScope()
 
-  container
-    .bind<RoutingService>(RoutingServiceType)
-    .to(RouterServiceImpl)
-    .inSingletonScope();
+    container
+        .bind<AuthenticationService>(AuthenticationServiceType)
+        .to(AuthenticationServiceImpl)
+        .inSingletonScope()
 
-  container
-    .bind<TodoStore>(TYPES.TodoStore)
-    .to(TodoStoreImpl)
-    .inSingletonScope();
+    container
+        .bind<AuthorizationService>(TYPES.AuthorizationServiceType)
+        .to(AuthorizationServiceImpl)
+        .inSingletonScope()
 
-  container
-    .bind<AuthenticationService>(AuthenticationServiceType)
-    .to(AuthenticationServiceImpl)
-    .inSingletonScope();
-
-  container
-    .bind<AuthorizationService>(TYPES.AuthorizationServiceType)
-    .to(AuthorizationServiceImpl)
-    .inSingletonScope();
-
-  container
-    .bind(TYPES.AuthenticationService)
-    .toService(AuthenticationServiceType);
-
-  return container;
-};
-
-export const container: Container = createContainer();
+    container.bind(TYPES.AuthenticationService).toService(AuthenticationServiceType)
+}

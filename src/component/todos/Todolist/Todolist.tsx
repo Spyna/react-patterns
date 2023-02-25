@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { byCompleted } from "../../../utils/sortUtils";
 import Todo from "../Todo/Todo";
-import { useModel } from "../../../ioc/useModel";
+import { useModel } from "terso";
 import {
   TodoListPresenter,
   TodoListViewModel,

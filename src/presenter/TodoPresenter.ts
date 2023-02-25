@@ -1,14 +1,14 @@
 import { inject, injectable } from "inversify";
-import { action, makeObservable, observable, runInAction } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { TYPES } from "../ioc/ioc.types";
 import {
   Permissions,
   type AuthorizationService,
 } from "../service/AuthorizationService";
 import { type TodoStore } from "../service/TodoService";
-import { Presenter } from "./Presenter";
+import { Presenter, ViewModel } from "terso";
 
-export interface TodoViewModel {
+export interface TodoViewModel extends ViewModel {
   canDelete: boolean;
 }
 

@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { Todo } from "../domain/Todo";
 import { TYPES } from "../ioc/ioc.types";
-import { Presenter, ViewModel } from "./Presenter";
+import { Presenter, ViewModel } from "terso";
 import { type TodoStore } from "../service/TodoService";
 
 export interface TodoListViewModel extends ViewModel {

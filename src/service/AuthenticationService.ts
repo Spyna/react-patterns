@@ -1,5 +1,5 @@
 import { User } from "../domain/User";
-import { RouterAuthenticationService } from "../routing/RouterAuthenticationService";
+import { RouterAuthenticationService } from "terso-routing";
 
 export interface AuthenticationService extends RouterAuthenticationService {
   isAuthenticated(): boolean;
