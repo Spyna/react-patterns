@@ -1,6 +1,12 @@
 {
-  "name": "react-architecture-patterns",
+  "name": "react-patterns",
   "version": "0.1.0",
+  "author": "Lorenzo Spinelli (spyna)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spyna/terso.git"
+  },
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
